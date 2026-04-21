@@ -137,6 +137,5 @@ credit-card-fraud-detection-ml/
 ---
 
 ## 👤 Author
-**Your Name**  
-BS Computer Science — NED University  
-[LinkedIn](https://linkedin.com/in/your-profile) | [GitHub](https://github.com/your-username)
+**Hamza Asif**  
+BS Artificial Intelligence — DUET University  
