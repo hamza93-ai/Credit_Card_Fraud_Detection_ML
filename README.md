@@ -4,6 +4,7 @@
 ---
 
 ## 📌 Project Overview
+
 This project detects fraudulent credit card transactions using supervised machine learning models. The dataset contains **284,807 real transactions** from European cardholders, of which only **0.17% are fraudulent** — making it a highly imbalanced classification problem.
 
 All models are evaluated using **Stratified K-Fold Cross Validation (cv=5)** for reliable and unbiased performance measurement.
@@ -11,6 +12,7 @@ All models are evaluated using **Stratified K-Fold Cross Validation (cv=5)** for
 ---
 
 ## 📂 Dataset
+
 - **Source:** [Kaggle — Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
 - **File:** `creditcard.csv`
 - **Size:** 284,807 transactions | 31 features
@@ -21,6 +23,7 @@ All models are evaluated using **Stratified K-Fold Cross Validation (cv=5)** for
 ---
 
 ## 🛠️ Technologies Used
+
 | Tool | Purpose |
 |------|---------|
 | Python | Core programming language |
@@ -52,24 +55,29 @@ Fraud Prediction System (predict_fraud)
 ---
 
 ## 📊 Models Used
+
 | Model | Type |
 |-------|------|
 | 🔵 Logistic Regression | Linear baseline |
 | 🟠 Decision Tree | Rule-based non-linear |
-| 🟢 Random Forest | Ensemble — Best Model ✅ |
+| 🟢 Random Forest | Ensemble model |
 
 ---
 
-## 📈 Key Results
-| Model | K-Fold Accuracy |
-|-------|----------------|
-| Logistic Regression | ~93–95% |
-| Decision Tree | ~92–95% |
-| **Random Forest** | **~95–97% ✅** |
+## 📈 Key Results (Stratified K-Fold, cv=5)
+
+| Model | K-Fold Accuracy | Std Dev | Verdict |
+|-------|----------------|---------|---------|
+| **Logistic Regression** | **~94.00%** | **±1.31%** | **Best ✅** |
+| Random Forest | ~93.80% | ±1.70% | Runner-up |
+| Decision Tree | ~91.36% | ±1.55% | Good |
+
+> 💡 **Why Logistic Regression won:** After undersampling the dataset to 984 balanced samples, the PCA-transformed features (V1–V28) become linearly separable, giving Logistic Regression an edge over ensemble methods on this small balanced dataset.
 
 ---
 
 ## 🔍 Project Sections
+
 1. Introduction & Problem Statement
 2. K-Fold Cross Validation Theory
 3. Library Imports
@@ -96,36 +104,60 @@ Fraud Prediction System (predict_fraud)
 ---
 
 ## 💳 Fraud Prediction System
+
 A `predict_fraud()` module is implemented that:
+
 - Takes new transaction data as input
-- Applies the trained Best Random Forest model
+- Applies the trained **Best Logistic Regression model**
 - Outputs **fraud probability score**
 - Returns **FRAUDULENT** 🚨 or **LEGITIMATE** ✅ classification
 
 ```python
-predict_fraud(transaction_data, best_rf, scaler, feature_names)
+predict_fraud(transaction_data, best_model, scaler, feature_names)
 ```
+
+---
+
+## 🏆 Top Fraud Indicators (Feature Importance — Random Forest)
+
+| Rank | Feature | Importance | Insight |
+|------|---------|------------|---------|
+| 1 | V14 | ~26.5% | Strongest fraud predictor |
+| 2 | V10 | ~10.3% | Correlated with fraud profiles |
+| 3 | V17 | ~9.3% | Key fraud pattern detector |
+| 4 | V4  | ~9.1% | Behavioral spending patterns |
+| 5 | V12 | ~7.6% | Unusual spending behavior |
 
 ---
 
 ## 🚀 How to Run
+
 1. Clone this repository
+
 ```bash
 git clone https://github.com/YOUR_USERNAME/credit-card-fraud-detection-ml.git
 ```
+
 2. Download `creditcard.csv` from [Kaggle](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) and place it in the project folder
+
 3. Install required libraries
+
 ```bash
 pip install pandas numpy matplotlib seaborn scikit-learn
 ```
+
 4. Open and run the notebook
+
 ```bash
 jupyter notebook Credit_Card_Fraud_Detection.ipynb
 ```
 
+> ⚠️ **Important:** Run all cells in order (top to bottom). Do not skip cells — each cell depends on variables defined in the previous ones.
+
 ---
 
 ## 📁 Repository Structure
+
 ```
 credit-card-fraud-detection-ml/
 │
@@ -137,5 +169,6 @@ credit-card-fraud-detection-ml/
 ---
 
 ## 👤 Author
-**Hamza Asif**  
-BS Artificial Intelligence — DUET University  
+
+**Hamza Asif**
+BS Artificial Intelligence — DUET University
