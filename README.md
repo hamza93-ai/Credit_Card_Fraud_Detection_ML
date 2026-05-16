@@ -135,7 +135,7 @@ predict_fraud(transaction_data, best_model, scaler, feature_names)
 1. Clone this repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/credit-card-fraud-detection-ml.git
+git clone https://github.com/hamza93-ai/credit-card-fraud-detection-ml.git
 ```
 
 2. Download `creditcard.csv` from [Kaggle](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) and place it in the project folder
